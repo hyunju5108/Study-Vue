@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Hello Vue! -->
+    </div>
+
+    <script>
+        var div = document.querySelector('#app');  // $("#app") 태그의 정보를 받아와서
+        // console.log(div);
+        var str = "Hello Vue!";
+        div.innerHTML = str;    // javascript는 해당 DOM의 값을 조작하는 역할
+
+        str = "Hello Vue!!!";
+        div.innerHTML = str;
+
+        // --------> 기존에 이렇게 하던 웹 개발 방식을 Vue로 어떻게 구현할 수 있는지.
+    </script>
+    
+</body>
+</html>
