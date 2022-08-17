@@ -1,0 +1,39 @@
+<!-- 이벤트를 발생시키고 수신하기 -->
+<!-- child-component의 버튼을 클릭하여 이벤트를 발생시키고, 발생한 이벤트로 상위 컴포넌트의 printText()메서드를 실행시킴 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <child-component v-on:show-log="printText"></child-component>   <!-- <child-component>에 정의한 v-on:show-log에 전달되고 대상메소드인 printText()가 호출됨 -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('child-component', {
+            template : '<button v-on:click="showLog">Show</button>',    // 버튼 클릭시, showLog 함수 호출
+            methods : {                         // showLog 함수 안에 this.$emit()이 실행되면서 'show-log'이벤트 발생
+                showLog : function() {
+                    this.$emit('show-log');
+                }
+            }
+        });
+
+        var app = new Vue({
+            el : "#app",
+            data : {
+                message : 'Hello Vue! passed from Parent Component'
+            },
+            methods : {
+                printText : function() {
+                    console.log("received an event");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
