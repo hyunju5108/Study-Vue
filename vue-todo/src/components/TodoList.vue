@@ -1,37 +1,39 @@
 <template>
     <section>
-        <ul>
-            <li
-                v-for="(todoItem, index) in todoItems"
-                :key="todoItem" class="shadow">
+        <transition-group name="list" tag="ul">
+            <li v-for="(todoItem, index) in propsdata" :key="todoItem" class="shadow">
                 <i class="checkBtn fas fa-check" aria-hidden="true"></i>
                 {{ todoItem }}
                 <span class="removeBtn" type="button" @click="removeTodo(todoItem, index)">
                     <i class="far fa-trash-alt" aria-hidden="true"></i>
                 </span>
             </li>
-        </ul>
+        </transition-group>
     </section>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            todoItems: []
-        }
-    },
-    created(){
-        if(localStorage.length > 0) {
-            for( var i = 0; i < localStorage.length; i++) {
-                this.todoItems.push(localStorage.key(i));
-            }
-        }
-    },
+    props: ['propsdata'],
+    // data: function() {
+    //     return {
+    //         todoItems: []
+    //     }
+    // },
+    // App.vue로 이동
+    // created: function(){
+    //     if(localStorage.length > 0) {
+    //         for( var i = 0; i < localStorage.length; i++) {
+    //             this.todoItems.push(localStorage.key(i));
+    //         }
+    //     }
+    // },
     methods: {
-        removeTodo(todoItem, index) {
-            localStorage.removeItem(todoItem);      // 로컬스토리지에서 삭제
-            this.todoItems.splice(index, 1);
+        removeTodo: function(todoItem, index) {
+            // localStorage.removeItem(todoItem);      // 로컬스토리지에서 삭제
+            // this.todoItems.splice(index, 1);
+            // -> TodoList 컴포넌트의 각 할 일 아이템을 삭제하는 로직에도 이벤트 전달 방식 적용
+            this.$emit('removeTodo', todoItem, index);
         }
     }
 }
