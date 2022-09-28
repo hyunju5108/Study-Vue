@@ -22,37 +22,37 @@ import TodoFooter from './components/TodoFooter.vue'
 // library.add(faHatWizard, FontAwesomeIcon)
 
 export default {
-    data : function() {
+    data() {
         return {
             todoItems: []
         }
     },
-    created: function(){
+    created(){
         if(localStorage.length > 0) {
-            for( var i = 0; i < localStorage.length; i++) {
+            for( let i = 0; i < localStorage.length; i++) {
                 this.todoItems.push(localStorage.key(i));
             }
         }
     },
     methods: {
-        addTodo: function(todoItem) {
+        addTodo(todoItem) {
             localStorage.setItem(todoItem, todoItem);    // key, value
             this.todoItems.push(todoItem);
         },
-        clearAll: function() {
+        clearAll() {
             localStorage.clear();
             this.todoItems = [];
         },
-        removeTodo: function(todoItem, index) {
+        removeTodo(todoItem, index) {
             localStorage.removeItem(todoItem);
             this.todoItems.splice(index, 1);
         }
     },
     components: {
-      'TodoHeader' : TodoHeader,
-      'TodoInput' : TodoInput,
-      'TodoList' : TodoList,
-      'TodoFooter' : TodoFooter
+        TodoHeader,
+        TodoInput,
+        TodoList,
+        TodoFooter
     }
 }
 </script>

@@ -20,19 +20,19 @@
 import Modal from './common/Modal.vue'
 
 export default {
-    data: function() {
+    data() {
         return {
             newTodoItem: '',
             showModal: false
         }
     },
     methods : {
-        addTodo: function() {
+        addTodo() {
             // console.log(this.newTodoItem);
             // 로컬 스토리지에 저장
             // localStorage.setItem(this.newTodoItem, this.newTodoItem); // key, value
             if(this.newTodoItem !== "") {
-                var value = this.newTodoItem && this.newTodoItem.trim();
+                let value = this.newTodoItem && this.newTodoItem.trim();
                 //localStorage.setItem(value, value);
                 this.$emit('addTodo', value);       // 상위 컴포넌트로 value 인자 전달
                 this.clearInput();
@@ -40,13 +40,13 @@ export default {
                 this.showModal = !this.showModal;
             }
         },
-        clearInput: function() {
+        clearInput() {
             this.newTodoItem = '';
         }
     },
 
     components: {
-        Modal: Modal
+        Modal
     }
 }
 </script>

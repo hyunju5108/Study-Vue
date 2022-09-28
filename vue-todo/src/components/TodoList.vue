@@ -29,7 +29,7 @@ export default {
     //     }
     // },
     methods: {
-        removeTodo: function(todoItem, index) {
+        removeTodo(todoItem, index) {
             // localStorage.removeItem(todoItem);      // 로컬스토리지에서 삭제
             // this.todoItems.splice(index, 1);
             // -> TodoList 컴포넌트의 각 할 일 아이템을 삭제하는 로직에도 이벤트 전달 방식 적용
@@ -67,5 +67,14 @@ li {
 .removeBtn {
     margin-left: auto;
     color: #de4343;
+}
+
+.list-enter-active, .list-leave-active {
+    transition: all 1s;
+}
+
+.list-enter, .list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
 }
 </style>
