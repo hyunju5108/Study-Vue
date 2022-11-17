@@ -19,7 +19,19 @@ function fetchAsksList() {
     return axios.get(`${config.baseUrl}ask/1.json`);
 }
 
+function fetchUserInfo(userName) {
+    return axios.get(`${config.baseUrl}user/${userName}.json`);  // -> store/actions.js 에 선언해주면 됨.
+}
+
+function fetchItemInfo(item) {
+    return axios.get(`${config.baseUrl}item/${item}.json`);  // -> store/actions.js 에 선언해주면 됨.
+}
+
 export {
-    fetchNewsList,fetchJobsList, fetchAsksList
+    fetchNewsList,
+    fetchJobsList,
+    fetchAsksList,
+    fetchUserInfo,
+    fetchItemInfo
 }
 

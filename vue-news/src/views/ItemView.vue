@@ -1,18 +1,44 @@
 <template>
   <div>
-    <ul>
-        <li>item1</li>
-        <li>item2</li>
-        <li>item3</li>
-        <li>item4</li>
-        <li>item5</li>
-    </ul>
+    <section>
+      <!-- 질문상세정보 -->
+      <div>
+        <div>
+          User
+        </div>
+        <div>
+          <router-link :to="`/user/${fetchedItem.user}`">
+            {{ fetchedItem.user }}
+          </router-link>
+          <div>
+            {{ fetchedItem.time_ago }}
+          </div>
+        </div>
+        <h2>{{ fetchedItem.title }}</h2>
+      </div>
+
+    </section>
+    <section>
+
+    </section>
+
+    <!-- {{ fetchedItem.content }} -->
   </div>
 </template>
 
 <script>
-export default {
+import {mapGetters} from 'vuex';
 
+export default {
+  created() {
+    console.log(this.$store.state.item);
+
+    const itemId = this.$route.params.id; 
+    this.$store.dispatch("FETCH_ITEM", itemId);
+  },
+  computed: {
+      ...mapGetters(['fetchedItem']),
+  }
 }
 </script>
 

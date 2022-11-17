@@ -1,4 +1,4 @@
-import {fetchNewsList, fetchJobsList, fetchAsksList} from '../api/index.js'
+import {fetchNewsList, fetchJobsList, fetchAsksList, fetchUserInfo, fetchItemInfo} from '../api/index.js'
 
 export default {
     FETCH_NEWS(context) {
@@ -32,6 +32,24 @@ export default {
         .catch(function(error) {
             console.log(error);
         })
+    },
+    FETCH_USER({ commit }, name) {
+        fetchUserInfo(name)
+        .then(({data}) => {
+            commit('SET_USER', data);   // mutations.js
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    },
+    FETCH_ITEM({ commit }, name) {
+        fetchItemInfo(name)
+        .then(({data}) => {
+            commit('SET_ITEM', data);   // mutations.js
+        })
+        .catch(error => {
+            console.log(error);
+        });
     },
 
 }
