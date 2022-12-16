@@ -1,7 +1,7 @@
 <template>
     <section>
         <transition-group name="list" tag="ul">
-            <li v-for="(todoItem, index) in propsdata" :key="todoItem" class="shadow">
+            <li v-for="(todoItem, index) in this.storedTodoItems" v-bind:key="todoItem" class="shadow">
                 <i class="checkBtn fas fa-check" aria-hidden="true"></i>
                 {{ todoItem }}
                 <span class="removeBtn" type="button" @click="removeTodo(todoItem, index)">
@@ -13,8 +13,10 @@
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex'
+
 export default {
-    props: ['propsdata'],
     // data: function() {
     //     return {
     //         todoItems: []
@@ -33,8 +35,12 @@ export default {
             // localStorage.removeItem(todoItem);      // 로컬스토리지에서 삭제
             // this.todoItems.splice(index, 1);
             // -> TodoList 컴포넌트의 각 할 일 아이템을 삭제하는 로직에도 이벤트 전달 방식 적용
-            this.$emit('removeTodo', todoItem, index);
+            // this.$emit('removeTodo', todoItem, index);
+            this.$store.commit('removeTodo', {todoItem, index});
         }
+    },
+    computed : {
+        ...mapGetters([storedTodoItems])
     }
 }
 </script>

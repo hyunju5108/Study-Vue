@@ -33,32 +33,33 @@ export default {
     created() {
         // var vm = this;
         // this.$store.dispatch("FETCH_NEWS");
-        console.log(this.$route.path);
-        const name = this.$route.name;
+        // console.log(this.$route.path);
+        // const name = this.$route.name;
 
-        if(name === "news") {
-            this.$store.dispatch("FETCH_NEWS");
-        } else if(name === "ask") {
-            this.$store.dispatch("FETCH_ASK");
-        } else if(name === "jobs") {
-            this.$store.dispatch("FETCH_JOBS");
-        }
+        // if(name === "news") {
+        //     this.$store.dispatch("FETCH_NEWS");
+        // } else if(name === "ask") {
+        //     this.$store.dispatch("FETCH_ASK");
+        // } else if(name === "jobs") {
+        //     this.$store.dispatch("FETCH_JOBS");
+        // }
 
     },
     computed: {
         listItems() {
-            const name = this.$route.name;
-            let listItem = "";
+            // const name = this.$route.name;
+            // let listItem = "";
 
-            if(name === "news") {
-                listItem = this.$store.state.news;
-            } else if(name === "ask") {
-                listItem = this.$store.state.ask;
-            } else if(name === "jobs") {
-                listItem = this.$store.state.jobs;
-            }
+            // if(name === "news") {
+            //     listItem = this.$store.state.news;
+            // } else if(name === "ask") {
+            //     listItem = this.$store.state.ask;
+            // } else if(name === "jobs") {
+            //     listItem = this.$store.state.jobs;
+            // }
 
-            return listItem;
+            // return listItem;
+            return this.$store.state.list;
         }
     }
 }

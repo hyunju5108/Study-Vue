@@ -32,7 +32,9 @@
 
 <script>
 import ListItem from '../components/ListItem.vue';
+// import bus from '../utils/bus.js';
 // import { fetchJobsList } from '../api/index.js'
+import ListMxin from '../mixins/ListMixin.js';
 
 export default {
   // data() {
@@ -46,7 +48,24 @@ export default {
   // }
   components: {
     ListItem
-  }
+  },
+  mixins: [ListMxin]
+  // created() {
+  //   bus.$emit('start:spinner'); // 이벤트를 spinner로 보냄
+
+  //   setTimeout(()=> {
+  //     this.$store.dispatch("FETCH_JOBS")
+  //     .then(() => {
+  //       console.log('fetched');
+  //       bus.$emit('end:spinner'); // 이벤트를 spinner로 보냄
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  //   }, 3000);
+    
+    
+  // }
 }
 </script>
 

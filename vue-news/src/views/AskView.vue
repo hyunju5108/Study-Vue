@@ -37,11 +37,28 @@
 // import { fetchAsksList } from '../api/index.js'
 // import { mapState, mapGetters } from 'vuex';
 import ListItem from '../components/ListItem.vue';
+// import bus from '../utils/bus.js';
+import ListMxin from '../mixins/ListMixin.js';
 
 export default {
   components: {
     ListItem
-  }
+  },
+  mixins: [ListMxin]
+  // created() {
+  //   bus.$emit('start:spinner'); // 이벤트를 spinner로 보냄
+
+  //   setTimeout(()=> {
+  //     this.$store.dispatch("FETCH_ASK")
+  //     .then(() => {
+  //       console.log('fetched');
+  //       bus.$emit('end:spinner'); // 이벤트를 spinner로 보냄
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  //   }, 3000);
+  // }
   // data() {
   //   return {
   //     ask : []

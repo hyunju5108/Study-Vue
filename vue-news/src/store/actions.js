@@ -1,11 +1,11 @@
-import {fetchNewsList, fetchJobsList, fetchAsksList, fetchUserInfo, fetchItemInfo} from '../api/index.js'
+import {fetchNewsList, fetchJobsList, fetchAsksList, fetchUserInfo, fetchItemInfo, fetchList} from '../api/index.js'
 
 export default {
     FETCH_NEWS(context) {
         fetchNewsList()
         .then(response => {
-            console.log(response);
             context.commit('SET_NEWS', response.data);       // 이 기능을 이용해서 mutations에 값을 넘길 수 있음
+            return response;
         })
         .catch(function(error){
             console.log(error);
@@ -51,5 +51,10 @@ export default {
             console.log(error);
         });
     },
+    FETCH_LIST({ commit }, pageName) {
+        fetchList(pageName)
+        .then(({data}) => commit("SET_LIST", data))
+        .catch(error=>console.log(error));
+    }
 
 }
