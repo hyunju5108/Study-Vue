@@ -3,7 +3,7 @@ import bus from '../utils/bus.js'
 // mixin
 export default {
     // 재사용할 컴포넌트 옵션 & 로직
-
+    
     created() {
         bus.$emit('start:spinner'); // 이벤트를 spinner로 보냄
 
@@ -17,5 +17,8 @@ export default {
                 console.log(error);
             });
         //
-  }
+    },
+    mounted() {
+        bus.$emit('end:spinner'); 
+    },
 }

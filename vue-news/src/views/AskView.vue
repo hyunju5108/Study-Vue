@@ -44,6 +44,9 @@ export default {
   components: {
     ListItem
   },
+  // mounted() {
+  //   bus.$emit('end:spinner'); 
+  // }
   mixins: [ListMxin]
   // created() {
   //   bus.$emit('start:spinner'); // 이벤트를 spinner로 보냄
